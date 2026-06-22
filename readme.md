@@ -1,3 +1,5 @@
+> ℹ️ **Projeto base:** este projeto é um *fork* do projeto original criado por **[Felipe Aguiar (Felipão)](https://github.com/felipeAguiarCode)** — Coordenador de educação na **DIO**, no contexto do Bootcamp **Node.js Jornada Para o Futuro**. As melhorias e extensões implementadas sobre o projeto base estão descritas na seção [🚀 Melhorias Implementadas](#-melhorias-implementadas-requisitos-para-finalização-do-bootcamp-nodejs--jornada-para-o-futuro).
+
 ## 💻 Sobre o Projeto
 
 Este projeto é um **kit de utilidades via linha de comando (CLI)** construído em Node.js, voltado para um e-commerce. Ele foi pensado para ser **escalável e extensível**, permitindo a adição de novas features com facilidade e seguindo uma organização por camadas (controller → service → utils).

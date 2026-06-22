@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import chalk from "chalk";
-import qr from "qrcode-terminal";
 import QRCode from "qrcode";
+import qr from "qrcode-terminal";
 
 function pngFileName() {
 	const ts = new Date()

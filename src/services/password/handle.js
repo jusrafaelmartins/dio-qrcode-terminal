@@ -10,8 +10,7 @@ async function handle() {
 		);
 	}
 
-	const passwordLength =
-		Number(process.env.PASSWORD_LENGTH) || 10;
+	const passwordLength = Number(process.env.PASSWORD_LENGTH) || 10;
 
 	let password = "";
 	for (let i = 0; i < passwordLength; i++) {

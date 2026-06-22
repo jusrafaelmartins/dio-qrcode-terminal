@@ -1,67 +1,15 @@
-<!--START_SECTION:header-->
-<div align="center">
-  <p align="center">
-    <img 
-      alt="DIO Education" 
-      src="https://raw.githubusercontent.com/digitalinnovationone/template-github-trilha/main/.github/assets/logo.webp" 
-      width="100px" 
-    />
-    <h1>Gerador de QRcode para e-commerce</h1>
-  </p>
-</div>
-<!--END_SECTION:header-->
-
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=DIO&message=Education&color=E94D5F&labelColor=202024" alt="DIO Project" />
-  <a href="NIVEL"><img  src="https://img.shields.io/static/v1?label=Nivel&message=Basico&color=E94D5F&labelColor=202024" alt="Nivel"></a>
-
-</p>
-
-<!--  -->
-<table align="center">
-<thead>
-  <tr>
-    <td>
-        <p align="center">Expert</p>
-        <a href="https://github.com/felipeAguiarCode">
-        <img src="https://avatars0.githubusercontent.com/u/37452836?v=3&s=115" alt="@felipeAguiarCode"><br>
-      </a>
-    </td>
-    <td colspan="3">
-    <p>🎉 10y+ em sistemas comerciais com .NET C# e NODE.JS.
-      <br/>
-     🌟 Desenvolvedor fullstack - Coordenador de educação na DIO
-      <br/>
-    👨‍💻 Foco em front-ends SPA com React, Angular e Vue.js
-    </p>
-      <a 
-      href="https://www.linkedin.com/in/felipe-me/" 
-      align="center">
-           <img 
-            align="center" 
-            alt="Material de Apoio" 
-            src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"
-            >
-        </a>
-        <a href="https://www.instagram.com/felipeaguiar.exe/" target="_blank">
-            <img 
-              align="center" 
-              alt="Instagram" 
-              src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"
-            >
-        </a>
-    </td>
-  </tr>
-</thead>
-</table>
-<!--  -->
-
-<br/>
-<br/>
-
 ## 💻 Sobre o Projeto
 
-Vamos construir um kit de utilidades para um e-commerce, o projeto deve ser escalável para ter adição de novas features.
+Este projeto é um **kit de utilidades via linha de comando (CLI)** construído em Node.js, voltado para um e-commerce. Ele foi pensado para ser **escalável e extensível**, permitindo a adição de novas features com facilidade e seguindo uma organização por camadas (controller → service → utils).
+
+Atualmente o kit oferece duas ferramentas:
+
+1. **Gerador de QR Code** — a partir de um link informado pelo usuário, gera o QR Code em diferentes formatos:
+   - **1** — Terminal grande
+   - **2** — Terminal compacto (small)
+   - **3** — Arquivo **PNG** (com o nome baseado em timestamp)
+   - **4** — Ambos (PNG + terminal)
+2. **Gerador de Senhas** — gera senhas aleatórias e **criptograficamente seguras** utilizando o módulo nativo `node:crypto`, totalmente configurável por variáveis de ambiente (tamanho e conjuntos de caracteres).
 
 ## 📚 Pré-requisitos de Habilidades e Níveis de Conhecimento
 
@@ -70,29 +18,92 @@ Antes de ingressar neste conteúdo, é necessário possuir conhecimento prévio 
 - Lógica de programação
 - Javascript | Básico
 - NodeJS | Básico
+- ES Modules (`import`/`export`)
 - Node Modules
 - NPM, Packages, Dependencies
-- Variáveis ambiente (.env)
+- Variáveis ambiente (`.env`)
 
 ## 🛠️ Habilidades e Sub-habilidades que vamos aprender neste conteúdo
 
-- Como gerar qrcode com node
+- Como gerar QR Code com Node (no terminal e como arquivo PNG)
+- Como gerar senhas com o módulo nativo `node:crypto` (`randomInt`)
 - Como lidar com várias dependências de um projeto
-- Como pensar em projetos por camadas
+- Como pensar em projetos por camadas (separation of concerns)
+- Como estruturar um projeto em ES Modules
+- Como carregar variáveis de ambiente nativamente com a flag `--env-file`
 
 ## 🎯 Objetivos e Resultados Esperados
 
 Após a conclusão do curso/projeto, os estudantes estarão aptos a:
 
-- Criar projetos nodejs que gerem multiplas dependências
+- Criar projetos Node.js que gerenciem múltiplas dependências
+- Disponibilizar um kit de utilidades extensível via CLI
+- Trabalhar com entrada de usuário (`prompt`) de forma validada
+- Aplicar boas práticas (comparação estrita, validação e tratamento de erros)
 
-<!--START_SECTION:footer-->
+## ⚙️ Como executar
 
-<br />
-<br />
+> Requisito: **Node.js 20.6+** (necessário para a flag nativa `--env-file`).
 
-<p align="center">
-  <a href="https://www.dio.me/" target="_blank">
-    <img align="center" src="https://raw.githubusercontent.com/digitalinnovationone/template-github-trilha/main/.github/assets/footer.png" alt="banner"/>
-  </a>
-</p>
+```bash
+# 1. Instalar as dependências
+npm install
+
+# 2. Configurar as variáveis de ambiente
+cp .env.example .env   # edite os valores conforme sua necessidade
+
+# 3. Executar o projeto
+npm start
+```
+
+Ao iniciar, um menu solicita a escolha da ferramenta (`1` para QR Code ou `2` para Senha). No fluxo de QR Code, informe o link e o tipo desejado (1 a 4). Os arquivos PNG são salvos na raiz do projeto no padrão `qrcode-YYYY-MM-DD-HH-MM-SS.png`.
+
+### Variáveis de ambiente (`.env`)
+
+| Variável            | Descrição                                              | Padrão |
+| ------------------- | ----------------------------------------------------- | ------ |
+| `PASSWORD_LENGTH`   | Tamanho da senha gerada (número inteiro)              | `10`   |
+| `UPPERCASE_LETTERS` | Inclui letras maiúsculas (`true`/`false`)             | —      |
+| `LOWERCASE_LETTERS` | Inclui letras minúsculas (`true`/`false`)             | —      |
+| `NUMBERS`           | Inclui números (`true`/`false`)                       | —      |
+| `SPECIAL_CHARACTERS`| Inclui caracteres especiais (`true`/`false`)          | —      |
+
+## 🗂️ Estrutura do Projeto
+
+```
+dio-qrcode-terminal/
+├── docs/
+│   └── arquitetura.tldr                              # Diagrama de arquitetura (tldraw)
+├── src/
+│   ├── index.js                                      # Entry point / menu principal (controller)
+│   ├── prompts-schema/
+│   │   ├── prompt-schema-main.js                     # Schema do menu de ferramentas
+│   │   └── prompt-schema-qrcode.js                   # Schema do fluxo de QR Code
+│   └── services/
+│       ├── password/
+│       │   ├── create.js                             # Orquestra a geração de senha
+│       │   ├── handle.js                             # Lógica de geração da senha
+│       │   └── utils/
+│       │       └── permitted-characters.js           # Conjuntos de caracteres permitidos
+│       └── qr-code/
+│           ├── create.js                             # Orquestra o fluxo de QR Code
+│           └── handle.js                             # Geração no terminal e em PNG
+├── .env.example                                      # Exemplo de configuração
+├── .gitignore
+├── package.json
+└── readme.md
+```
+
+## 🚀 Melhorias Implementadas (requisitos para finalização do Bootcamp Node.js — Jornada Para o Futuro)
+
+Como parte dos requisitos para finalização do **Bootcamp Node.js Jornada Para o Futuro** (DIO), as seguintes melhorias foram implementadas em relação ao projeto base:
+
+- **Geração de QR Code em PNG**: além do terminal, agora é possível salvar o QR Code como arquivo **PNG** (com timestamp no nome) e também gerar **ambos** os formatos em uma única execução.
+- **Novo gerador de senhas**: ferramenta adicional que gera senhas com o módulo nativo `node:crypto` (`randomInt`), tornando a geração criptograficamente segura e configurável via `.env`.
+- **Correção de bug de comparação (string vs número)**: a entrada do `prompt` chega como string; o uso de `parseInt(..., 10)` garante a comparação correta com os valores numéricos.
+- **Comparação estrita (`===`)**: troca dos operadores `==` por `===` em todo o projeto.
+- **Validação de entrada**: verificação com `Number.isNaN` e tratamento de opções inválidas.
+- **Tratamento de erros**: uso de `try/catch` com mensagens amigáveis para o usuário.
+- **ES Modules**: projeto em `"type": "module"`, utilizando `import/export`.
+- **Carregamento nativo de `.env`**: uso de `node --env-file=.env` (sem necessidade do pacote `dotenv`).
+- **Organização de código**: funções extraídas (`toTerminal`, `toPNG`), responsabilidades separadas por camadas e imports ordenados (recomendação do Biome).

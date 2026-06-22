@@ -1,0 +1,9 @@
+node_modules/
+.env
+
+# QR Codes PNG gerados localmente
+*.png
+
+# Sistema
+.DS_Store
+Thumbs.db
